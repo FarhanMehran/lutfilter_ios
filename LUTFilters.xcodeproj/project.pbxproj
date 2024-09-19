@@ -13,6 +13,7 @@
 		D829AA312C9C1A2300E3C93D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D829AA2F2C9C1A2300E3C93D /* Main.storyboard */; };
 		D829AA332C9C1A2500E3C93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D829AA322C9C1A2500E3C93D /* Assets.xcassets */; };
 		D829AA362C9C1A2500E3C93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D829AA342C9C1A2500E3C93D /* LaunchScreen.storyboard */; };
+		D829AA3E2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube in Resources */ = {isa = PBXBuildFile; fileRef = D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D829AA322C9C1A2500E3C93D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D829AA352C9C1A2500E3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D829AA372C9C1A2500E3C93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PRESET_Fujicolor_SuperHR100.cube; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,48 @@
 		D829AA282C9C1A2300E3C93D /* LUTFilters */ = {
 			isa = PBXGroup;
 			children = (
-				D829AA292C9C1A2300E3C93D /* AppDelegate.swift */,
-				D829AA2B2C9C1A2300E3C93D /* SceneDelegate.swift */,
-				D829AA2D2C9C1A2300E3C93D /* ViewController.swift */,
-				D829AA2F2C9C1A2300E3C93D /* Main.storyboard */,
-				D829AA322C9C1A2500E3C93D /* Assets.xcassets */,
-				D829AA342C9C1A2500E3C93D /* LaunchScreen.storyboard */,
+				D829AA422C9C1E1100E3C93D /* View */,
+				D829AA412C9C1E0400E3C93D /* Controller */,
+				D829AA402C9C1DF500E3C93D /* SupportingFiles */,
+				D829AA3F2C9C1DE700E3C93D /* Resources */,
 				D829AA372C9C1A2500E3C93D /* Info.plist */,
 			);
 			path = LUTFilters;
+			sourceTree = "<group>";
+		};
+		D829AA3F2C9C1DE700E3C93D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D829AA322C9C1A2500E3C93D /* Assets.xcassets */,
+				D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D829AA402C9C1DF500E3C93D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D829AA292C9C1A2300E3C93D /* AppDelegate.swift */,
+				D829AA2B2C9C1A2300E3C93D /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D829AA412C9C1E0400E3C93D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D829AA2D2C9C1A2300E3C93D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D829AA422C9C1E1100E3C93D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D829AA2F2C9C1A2300E3C93D /* Main.storyboard */,
+				D829AA342C9C1A2500E3C93D /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +162,7 @@
 			files = (
 				D829AA362C9C1A2500E3C93D /* LaunchScreen.storyboard in Resources */,
 				D829AA332C9C1A2500E3C93D /* Assets.xcassets in Resources */,
+				D829AA3E2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube in Resources */,
 				D829AA312C9C1A2300E3C93D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
