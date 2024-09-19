@@ -8,26 +8,31 @@
 import UIKit
 import CoreImage
 
-
 class ViewController: UIViewController {
     
     var originalImageView: UIImageView?
     var filteredImageView: UIImageView?
     var originalImage: UIImage?
     
+    // Array of image names and a variable to track the current index
+    let imageNames = ["Apple", "Apple1", "Apple2", "Apple3"]
+    var currentImageIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Load the dummy image "Apple" from assets
-        if let inputImage = UIImage(named: "Apple") {
+        // Load the initial image
+        if let inputImage = UIImage(named: imageNames[currentImageIndex]) {
             self.originalImage = inputImage
             displayOriginalImage(inputImage)
-            addApplyFilterButton()
+            addFilterButtons()
+            addNavigationButtons() // Add Next and Previous buttons
         } else {
             print("Failed to load the image from assets.")
         }
     }
     
+    // Function to display the current image
     func displayOriginalImage(_ image: UIImage) {
         originalImageView?.removeFromSuperview() // Remove old image view if any
         
@@ -38,24 +43,102 @@ class ViewController: UIViewController {
         self.originalImageView = imageView
     }
     
-    func addApplyFilterButton() {
-        let button = UIButton(type: .system)
-        button.setTitle("Apply LUT Filter", for: .normal)
-        button.addTarget(self, action: #selector(applyFilterButtonTapped), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: self.view.frame.height - 50, width: self.view.frame.width, height: 50)
-        button.backgroundColor = .systemBlue
-        button.setTitleColor(.white, for: .normal)
-        self.view.addSubview(button)
+    // Add "Next" and "Previous" buttons to switch images
+    func addNavigationButtons() {
+        let nextButton = UIButton(type: .system)
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.frame = CGRect(x: self.view.frame.width - 100, y: 50, width: 80, height: 40)
+        nextButton.backgroundColor = .systemBlue
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.addTarget(self, action: #selector(nextImage), for: .touchUpInside)
+        self.view.addSubview(nextButton)
+        
+        let prevButton = UIButton(type: .system)
+        prevButton.setTitle("Previous", for: .normal)
+        prevButton.frame = CGRect(x: 20, y: 50, width: 80, height: 40)
+        prevButton.backgroundColor = .systemBlue
+        prevButton.setTitleColor(.white, for: .normal)
+        prevButton.addTarget(self, action: #selector(prevImage), for: .touchUpInside)
+        self.view.addSubview(prevButton)
     }
     
-    @objc func applyFilterButtonTapped() {
+    // Function to handle "Next" button tap
+    @objc func nextImage() {
+        // Remove the filtered image view if it exists
+        filteredImageView?.removeFromSuperview()
+        
+        // Move to the next image
+        currentImageIndex = (currentImageIndex + 1) % imageNames.count
+        if let newImage = UIImage(named: imageNames[currentImageIndex]) {
+            self.originalImage = newImage // Update the original image reference
+            displayOriginalImage(newImage)
+        } else {
+            print("Failed to load the image.")
+        }
+    }
+
+    // Function to handle "Previous" button tap
+    @objc func prevImage() {
+        // Remove the filtered image view if it exists
+        filteredImageView?.removeFromSuperview()
+        
+        // Move to the previous image
+        currentImageIndex = (currentImageIndex - 1 + imageNames.count) % imageNames.count
+        if let newImage = UIImage(named: imageNames[currentImageIndex]) {
+            self.originalImage = newImage // Update the original image reference
+            displayOriginalImage(newImage)
+        } else {
+            print("Failed to load the image.")
+        }
+    }
+
+    // Function to add four filter buttons
+    func addFilterButtons() {
+        let buttonTitles = ["Fujicolor_SuperHR100", "Fujifilm_QuickSnap", "Kodak_FunSaver", "Kodak_WaterSport"]
+        
+        let gridRows = 2
+        let gridCols = 2
+        let horizontalPadding: CGFloat = 10
+        let verticalPadding: CGFloat = 10
+        let buttonWidth = (self.view.frame.width - (horizontalPadding * CGFloat(gridCols + 1))) / CGFloat(gridCols)
+        let buttonHeight: CGFloat = 50
+        let startYPosition = self.view.frame.height - (CGFloat(gridRows) * (buttonHeight + verticalPadding)) - 20
+        
+        for (index, title) in buttonTitles.enumerated() {
+            let row = index / gridCols
+            let col = index % gridCols
+            let buttonX = CGFloat(col) * (buttonWidth + horizontalPadding) + horizontalPadding
+            let buttonY = startYPosition + CGFloat(row) * (buttonHeight + verticalPadding)
+            
+            let button = UIButton(type: .system)
+            button.setTitle(title, for: .normal)
+            button.addTarget(self, action: #selector(applyFilterButtonTapped(_:)), for: .touchUpInside)
+            button.frame = CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight)
+            button.backgroundColor = .systemBlue
+            button.setTitleColor(.white, for: .normal)
+            button.tag = index // Assign a tag to differentiate filters
+            self.view.addSubview(button)
+        }
+    }
+
+
+    
+    // Function that handles filter button taps
+    @objc func applyFilterButtonTapped(_ sender: UIButton) {
         guard let inputImage = originalImage else {
             print("Original image not found.")
             return
         }
         
-        print("Attempting to apply LUT filter...")
-        if let filteredImage = applyLUTFilter(to: inputImage, withCubeFile: "PRESET_Fujicolor_SuperHR100") {
+        // Array of preset LUT file names
+        let presets = ["PRESET_Fujicolor_SuperHR100", "PRESET_Fujifilm_QuickSnap", "PRESET_Kodak_FunSaver", "PRESET_Kodak_WaterSport"]
+        
+        // Get the preset based on the button tag
+        let selectedPreset = presets[sender.tag]
+        
+        print("Attempting to apply LUT filter using: \(selectedPreset).cube")
+        
+        if let filteredImage = applyLUTFilter(to: inputImage, withCubeFile: selectedPreset) {
             print("LUT filter applied successfully.")
             filteredImageView?.removeFromSuperview() // Remove old filtered image view if any
             displayFilteredImage(filteredImage)
@@ -72,6 +155,11 @@ class ViewController: UIViewController {
         self.filteredImageView = imageView
     }
     
+
+}
+
+
+extension ViewController{
     func applyLUTFilter(to inputImage: UIImage, withCubeFile fileName: String) -> UIImage? {
         guard let lutData = loadLUTFromCubeFile(fileName: fileName) else {
             print("Failed to load LUT file.")
@@ -129,9 +217,6 @@ class ViewController: UIViewController {
                 
                 let components = trimmedLine.components(separatedBy: .whitespaces)
                 
-                // Debug print to check which line is being processed
-                print("Processing line: \(trimmedLine)")
-                
                 if components.count == 2 && components[0] == "LUT_3D_SIZE" {
                     if let size = Int(components[1]) {
                         lutSize = size
@@ -142,7 +227,6 @@ class ViewController: UIViewController {
                 }
             }
             
-            // Ensure LUT size was found
             if lutSize == 0 {
                 print("LUT size is zero. Something went wrong when parsing the file.")
                 return nil

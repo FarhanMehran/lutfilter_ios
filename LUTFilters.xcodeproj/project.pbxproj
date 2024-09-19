@@ -14,6 +14,9 @@
 		D829AA332C9C1A2500E3C93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D829AA322C9C1A2500E3C93D /* Assets.xcassets */; };
 		D829AA362C9C1A2500E3C93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D829AA342C9C1A2500E3C93D /* LaunchScreen.storyboard */; };
 		D829AA3E2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube in Resources */ = {isa = PBXBuildFile; fileRef = D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */; };
+		D834E9A12C9CA64E005F11A9 /* PRESET_Kodak_FunSaver.cube in Resources */ = {isa = PBXBuildFile; fileRef = D834E99E2C9CA64E005F11A9 /* PRESET_Kodak_FunSaver.cube */; };
+		D834E9A22C9CA64E005F11A9 /* PRESET_Fujifilm_QuickSnap.cube in Resources */ = {isa = PBXBuildFile; fileRef = D834E99F2C9CA64E005F11A9 /* PRESET_Fujifilm_QuickSnap.cube */; };
+		D834E9A32C9CA64E005F11A9 /* PRESET_Kodak_WaterSport.cube in Resources */ = {isa = PBXBuildFile; fileRef = D834E9A02C9CA64E005F11A9 /* PRESET_Kodak_WaterSport.cube */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		D829AA352C9C1A2500E3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D829AA372C9C1A2500E3C93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PRESET_Fujicolor_SuperHR100.cube; sourceTree = "<group>"; };
+		D834E99E2C9CA64E005F11A9 /* PRESET_Kodak_FunSaver.cube */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PRESET_Kodak_FunSaver.cube; sourceTree = "<group>"; };
+		D834E99F2C9CA64E005F11A9 /* PRESET_Fujifilm_QuickSnap.cube */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PRESET_Fujifilm_QuickSnap.cube; sourceTree = "<group>"; };
+		D834E9A02C9CA64E005F11A9 /* PRESET_Kodak_WaterSport.cube */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PRESET_Kodak_WaterSport.cube; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,9 @@
 		D829AA3F2C9C1DE700E3C93D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D834E99F2C9CA64E005F11A9 /* PRESET_Fujifilm_QuickSnap.cube */,
+				D834E99E2C9CA64E005F11A9 /* PRESET_Kodak_FunSaver.cube */,
+				D834E9A02C9CA64E005F11A9 /* PRESET_Kodak_WaterSport.cube */,
 				D829AA322C9C1A2500E3C93D /* Assets.xcassets */,
 				D829AA3D2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube */,
 			);
@@ -161,8 +170,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D829AA362C9C1A2500E3C93D /* LaunchScreen.storyboard in Resources */,
+				D834E9A22C9CA64E005F11A9 /* PRESET_Fujifilm_QuickSnap.cube in Resources */,
+				D834E9A12C9CA64E005F11A9 /* PRESET_Kodak_FunSaver.cube in Resources */,
 				D829AA332C9C1A2500E3C93D /* Assets.xcassets in Resources */,
 				D829AA3E2C9C1AB400E3C93D /* PRESET_Fujicolor_SuperHR100.cube in Resources */,
+				D834E9A32C9CA64E005F11A9 /* PRESET_Kodak_WaterSport.cube in Resources */,
 				D829AA312C9C1A2300E3C93D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +340,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9QYW2K7B2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LUTFilters/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -355,6 +368,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9QYW2K7B2X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LUTFilters/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
